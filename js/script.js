@@ -139,7 +139,7 @@
 						.addClass(nextSlideItem.attr("data-caption-animate"))
 						.addClass("animated");
 					if (duration) {
-						nextSlideItem.css('animation-duration', duration + 'ms');
+						nextSlideItem.css('.5', duration + '.5');
 					}
 				};
 			};
@@ -214,7 +214,7 @@
 			}
 
 			carousel.owlCarousel( {
-				autoplay:           isNoviBuilder ? false : carousel.attr( 'data-autoplay' ) !== 'false',
+				autoplay:           isNoviBuilder ? true : carousel.attr( 'data-autoplay' ) !== 'true',
 				autoplayTimeout:    carousel.attr( "data-autoplay" ) ? Number( carousel.attr( "data-autoplay" ) ) : 3000,
 				autoplayHoverPause: true,
 				loop:               isNoviBuilder ? false : carousel.attr( 'data-loop' ) !== 'false',
