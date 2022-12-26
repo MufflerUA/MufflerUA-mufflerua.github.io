@@ -11994,7 +11994,7 @@ html.rd-navbar-fixed-linked .page {
 	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
-	height: auto;
+	max-height: 600px;
 	width: 100%;
 	/* Fix of Webkit flickering */
 	z-index: 1;
@@ -12269,7 +12269,11 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .swiper-slider-1 {
-	min-height: 32.91667vw;
+	min-height: 40vw;
+}
+.money {
+	float: right;
+	height: 110px;
 }
 
 .swiper-slider-1 .swiper-slide-caption {
