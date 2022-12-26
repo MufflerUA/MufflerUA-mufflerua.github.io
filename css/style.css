@@ -12272,8 +12272,9 @@ html.rd-navbar-fixed-linked .page {
 	min-height: 40vw;
 }
 .money {
-	float: right;
-	height: 110px;
+	position: absolute;
+	right: 40%;
+	max-height: 110px;
 }
 
 .swiper-slider-1 .swiper-slide-caption {
