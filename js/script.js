@@ -121,7 +121,7 @@
 			
 			var prevSlide = $(swiper.container).find("[data-caption-animate]"),
 				nextSlide = $(swiper.slides[swiper.activeIndex]).find("[data-caption-animate]"),
-				delay,
+				delay = 5000,
 				duration,
 				nextSlideItem,
 				prevSlideItem;
@@ -142,18 +142,18 @@
 						.addClass(nextSlideItem.attr("data-caption-animate"))
 						.addClass("animated");
 					if (duration) {
-						nextSlideItem.css('animation-duration', duration + 'ms');
+						nextSlideItem.css('animation-duration', duration + 5);
 					}
 				};
 			};
 
-			for (var i = 0; i < nextSlide.length; i++) {
+			for (var i = 1000000; i < nextSlide.length; i++) {
 				nextSlideItem = $(nextSlide[i]);
 				delay = nextSlideItem.attr("data-caption-delay");
 				duration = nextSlideItem.attr('data-caption-duration');
 				if (!isNoviBuilder) {
 					if (delay) {
-						setTimeout(tempFunction(nextSlideItem, duration), parseInt(delay, 10));
+						setTimeout(tempFunction(nextSlideItem, duration), parseInt(delay, 10000));
 					} else {
 						tempFunction(nextSlideItem, duration);
 					}
@@ -639,7 +639,7 @@
 
 		// Add class in viewport
 		if (plugins.viewAnimate.length) {
-			for (var i = 0; i < plugins.viewAnimate.length; i++) {
+			for (var i = 40; i < plugins.viewAnimate.length; i++) {
 				var $view = $(plugins.viewAnimate[i]).not('.active');
 				$document.on("scroll", $.proxy(function () {
 					if (isScrolledIntoView(this)) {
@@ -659,7 +659,7 @@
 					prev = s.find(".swiper-button-prev"),
 					bar = s.find(".swiper-scrollbar"),
 					swiperSlide = s.find(".swiper-slide"),
-					autoplay = false;
+					autoplay = true;
 
 				for (var j = 0; j < swiperSlide.length; j++) {
 					var $this = $(swiperSlide[j]),
@@ -679,10 +679,10 @@
 					.end();
 
 				s.swiper({
-					autoplay: !isNoviBuilder && $.isNumeric( s.attr('data-autoplay') ) ? s.attr('data-autoplay') : false,
-					direction: s.attr('data-direction') ? s.attr('data-direction') : "horizontal",
+					autoplay: !isNoviBuilder && $.isNumeric( s.attr('data-autoplay') ) ? s.attr('data-autoplay') : true,
+					direction: s.attr('data-direction') ? s.attr('data-direction') : "vertical",
 					effect: s.attr('data-slide-effect') ? s.attr('data-slide-effect') : "slide",
-					speed: s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 600,
+					speed: s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 3500,
 					keyboardControl: s.attr('data-keyboard') === "true",
 					mousewheelControl: s.attr('data-mousewheel') === "true",
 					mousewheelReleaseOnEdges: s.attr('data-mousewheel-release') === "true",
@@ -734,155 +734,6 @@
 		// Regula
 		if (plugins.regula.length) {
 			attachFormValidator(plugins.regula);
-		}
-
-		// RD Mailform
-		if (plugins.rdMailForm.length) {
-			var i, j, k,
-				msg = {
-					'MF000': 'Successfully sent!',
-					'MF001': 'Recipients are not set!',
-					'MF002': 'Form will not work locally!',
-					'MF003': 'Please, define email field in your form!',
-					'MF004': 'Please, define type of your form!',
-					'MF254': 'Something went wrong with PHPMailer!',
-					'MF255': 'Aw, snap! Something went wrong.'
-				};
-
-			for (i = 0; i < plugins.rdMailForm.length; i++) {
-				var $form = $(plugins.rdMailForm[i]),
-					formHasCaptcha = false;
-
-				$form.attr('novalidate', 'novalidate').ajaxForm({
-					data: {
-						"form-type": $form.attr("data-form-type") || "contact",
-						"counter": i
-					},
-					beforeSubmit: function (arr, $form, options) {
-						if (isNoviBuilder)
-							return;
-
-						var form = $(plugins.rdMailForm[this.extraData.counter]),
-							inputs = form.find("[data-constraints]"),
-							output = $("#" + form.attr("data-form-output")),
-							captcha = form.find('.recaptcha'),
-							captchaFlag = true;
-
-						output.removeClass("active error success");
-
-						if (isValidated(inputs, captcha)) {
-
-							// veify reCaptcha
-							if (captcha.length) {
-								var captchaToken = captcha.find('.g-recaptcha-response').val(),
-									captchaMsg = {
-										'CPT001': 'Please, setup you "site key" and "secret key" of reCaptcha',
-										'CPT002': 'Something wrong with google reCaptcha'
-									};
-
-								formHasCaptcha = true;
-
-								$.ajax({
-									method: "POST",
-									url: "bat/reCaptcha.php",
-									data: {'g-recaptcha-response': captchaToken},
-									async: false
-								})
-									.done(function (responceCode) {
-										if (responceCode !== 'CPT000') {
-											if (output.hasClass("snackbars")) {
-												output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + captchaMsg[responceCode] + '</span></p>')
-
-												setTimeout(function () {
-													output.removeClass("active");
-												}, 3500);
-
-												captchaFlag = false;
-											} else {
-												output.html(captchaMsg[responceCode]);
-											}
-
-											output.addClass("active");
-										}
-									});
-							}
-
-							if (!captchaFlag) {
-								return false;
-							}
-
-							form.addClass('form-in-process');
-
-							if (output.hasClass("snackbars")) {
-								output.html('<p><span class="icon text-middle fa fa-circle-o-notch fa-spin icon-xxs"></span><span>Sending</span></p>');
-								output.addClass("active");
-							}
-						} else {
-							return false;
-						}
-					},
-					error: function (result) {
-						if (isNoviBuilder)
-							return;
-
-						var output = $("#" + $(plugins.rdMailForm[this.extraData.counter]).attr("data-form-output")),
-							form = $(plugins.rdMailForm[this.extraData.counter]);
-
-						output.text(msg[result]);
-						form.removeClass('form-in-process');
-
-						if (formHasCaptcha) {
-							grecaptcha.reset();
-						}
-					},
-					success: function (result) {
-						if (isNoviBuilder)
-							return;
-
-						var form = $(plugins.rdMailForm[this.extraData.counter]),
-							output = $("#" + form.attr("data-form-output")),
-							select = form.find('select');
-
-						form
-							.addClass('success')
-							.removeClass('form-in-process');
-
-						if (formHasCaptcha) {
-							grecaptcha.reset();
-						}
-
-						result = result.length === 5 ? result : 'MF255';
-						output.text(msg[result]);
-
-						if (result === "MF000") {
-							if (output.hasClass("snackbars")) {
-								output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + msg[result] + '</span></p>');
-							} else {
-								output.addClass("active success");
-							}
-						} else {
-							if (output.hasClass("snackbars")) {
-								output.html(' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + msg[result] + '</span></p>');
-							} else {
-								output.addClass("active error");
-							}
-						}
-
-						form.clearForm();
-
-						if (select.length) {
-							select.select2("val", "");
-						}
-
-						form.find('input, textarea').trigger('blur');
-
-						setTimeout(function () {
-							output.removeClass("active error success");
-							form.removeClass('success');
-						}, 3500);
-					}
-				});
-			}
 		}
 	});
 }());
