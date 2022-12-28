@@ -1,6 +1,7 @@
 
 "use strict";
 
+
 (function () {
 	// Global variables
 	var
@@ -117,6 +118,7 @@
 		 * @param {object} swiper - swiper slider
 		 */
 		function toggleSwiperCaptionAnimation(swiper) {
+			
 			var prevSlide = $(swiper.container).find("[data-caption-animate]"),
 				nextSlide = $(swiper.slides[swiper.activeIndex]).find("[data-caption-animate]"),
 				delay,

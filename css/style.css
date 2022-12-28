@@ -9111,7 +9111,7 @@ a[href*='tel'], a[href*='mailto'] {
 	margin-top: 50px;
 	display: inline-flex;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: flex-start;
 }
 .margin {
 	margin-right: 10px;
@@ -9121,14 +9121,14 @@ a[href*='tel'], a[href*='mailto'] {
 	display: inline-block;
 	align-items: center;
 	justify-content: center;
-	font-size: 34px;
+	font-size: 30px;
 	line-height: 1;
 	color: #ffb600;
 	margin-right: 20px;
 }
 
 .info-modern-link {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	line-height: 1;
 }
 
@@ -9394,7 +9394,9 @@ html .list-inline-md > * {
 p + .list-marked {
 	margin-top: 10px;
 }
-
+.a {
+	color: #ffb600;
+}
 .list-marked-1 {
 	text-align: left;
 	font-size: 1rem;
@@ -9403,6 +9405,7 @@ p + .list-marked {
 .list-marked-1 > li {
 	padding: 8px 0 8px 40px;
 	text-indent: -40px;
+	
 }
 
 .list-marked-1 > li:first-child {
@@ -9413,20 +9416,28 @@ p + .list-marked {
 	padding-bottom: 0;
 }
 
-.list-marked-1 > li a:hover {
-	color: #23344f;
+.list-marked-1 > li .a:hover {
+	color: #162235;
 }
 
-.list-marked-1 > li a::before {
+.list-marked-1 > li .a::before {
 	display: inline-block;
 	vertical-align: middle;
 	content: '\f00c';
-	font: 400 22px/1 'FontAwesome';
+	font: 400 24px/1 'FontAwesome';
 	color: inherit;
 	text-indent: 0;
 	margin-right: 18px;
 }
-
+.auto::before {
+	display: inline-block;
+	vertical-align: middle;
+	content: '\f00c';
+	font: 400 24px/1 'FontAwesome';
+	color: inherit;
+	text-indent: 0;
+	margin-right: 18px;
+}
 .list-marked-1 > li + li {
 	border-top: 1px solid #e5e5e5;
 }
@@ -11435,7 +11446,7 @@ html.tablet .ui-to-top {
 
 .rd-navbar-fixed .rd-navbar-nav-wrap {
 	color: #ffffff;
-	background: #ffffff;
+	background: hsl(222, 65%, 58%);
 	border: none;
 	box-shadow: 0 0 22px -4px rgba(0, 0, 0, 0.17);
 }
