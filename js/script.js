@@ -26,7 +26,7 @@
 			owl:                     $( '.owl-carousel' ),
 			preloader:               $( '.preloader' ),
 			rdNavbar:                $( '.rd-navbar' ),
-			rdMailForm:              $( '.rd-mailform' ),
+			
 			rdInputLabel:            $( '.form-label' ),
 			regula:                  $( '[data-constraints]' ),
 			swiper:                  $( '.swiper-container' ),
@@ -682,7 +682,7 @@
 					autoplay: !isNoviBuilder && $.isNumeric( s.attr('data-autoplay') ) ? s.attr('data-autoplay') : true,
 					direction: s.attr('data-direction') ? s.attr('data-direction') : "vertical",
 					effect: s.attr('data-slide-effect') ? s.attr('data-slide-effect') : "slide",
-					speed: s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 3500,
+					speed: s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 12000,
 					keyboardControl: s.attr('data-keyboard') === "true",
 					mousewheelControl: s.attr('data-mousewheel') === "true",
 					mousewheelReleaseOnEdges: s.attr('data-mousewheel-release') === "true",

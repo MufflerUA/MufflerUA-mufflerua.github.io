@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
-    <title>Контакти</title>
+    <title>Contacts</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,7 @@
         <div class="cssload-container">
           <div class="cssload-speeding-wheel"></div>
         </div>
-        <p>Завантаження...</p>
+        <p>Downloading...</p>
       </div>
     </div>
     <div class="page">
@@ -44,13 +44,16 @@
                         src="images/logo.png" alt="" width="250" height="51" /></a>
                   </div>
                 </div>
+                <div class="money">
+                  <fxwidget-er inverse="false" amount="100" decimals="2" large="false" shadow="true" symbol="true" flag="true" changes="true" grouping="true" border="false" main-curr="USD"  sel-curr="EUR,PLN,UAH" background-color="#23344f" separator="" decimal-point=","></fxwidget-er>
+                </div>
                 <div class="rd-navbar-info rd-navbar-collapse">
                   <article class="info-modern">
                     <div class="div"><div class="info-modern-icon fa-phone margin"></div><a class="info-modern-link" href="tel:+38(097)4330790">+38 (097) 433-07-90</a></div>
                   <div class="div"><div class="info-modern-icon fa-phone margin"></div><a class="info-modern-link" href="tel:+38(067)6160109">+38 (067) 616-01-09</a></div>
                   <div class="div"><div class="info-modern-icon fa-envelope"></div><a class="info-modern-link" href="mailto:muffler.broker@.gmail.com">muffler.broker@.gmail.com</a></div>   
                 </article>
-                  <p>Подзвоніть або напишіть нам, для того щоб отримати безкоштовну консультацію від наших експертів!</p>
+                  <p>Call or write to us to get a free consultation from our experts!</p>
                 </div>
               </div>
             </div>
@@ -58,13 +61,14 @@
               <div class="rd-navbar-main">
                 <div class="rd-navbar-nav-wrap">
                   <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Головна</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="indexeng.html">Main</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">Про нас</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="abouteng.html">About</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="contacts.html">Контакти</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="contactseng.html">Contacts</a>
                     </li>
                   </ul>
+                  <button class="lang"><a href="index.html" class="ua">UA</a><span>|</span> <a href="indexeng.html" class="eng">ENG</a></button>
                 </div>
               </div>
             </div>
@@ -88,7 +92,7 @@
                       <div class="unit-left">
                         <div class="info-classic-icon fa-map-marker"></div>
                       </div>
-                      <div class="unit-body"><a class="info-classic-link" href="https://goo.gl/maps/nGSySMH7P8w7UJk97">Хмельницька обл, м.Кам'янець-Подільський, вул. Маршала Харченка 22Б, 32302</a></div>
+                      <div class="unit-body"><a class="info-classic-link" href="https://goo.gl/maps/nGSySMH7P8w7UJk97">Khmelnytskyi region, Kamianets-Podilskyi, st. Marshal Kharchenko 22B, 32302</a></div>
                     </div>
                   </article>
                 </div>
@@ -114,7 +118,7 @@
                       <div class="unit-left">
                         <div class="info-classic-icon fa-phone"></div>
                       </div>
-                      <div class="unit-body"><a class="info-classic-link" href="tel:+38(097)4330790"> +38 (097)4330790</a></div>
+                      <div class="unit-body"><a class="info-classic-link" href="tel:+38(097)4330790"> +38 (097) 433 07 90</a></div>
                     </div>
                   </article>
                 </div>
@@ -138,13 +142,13 @@
       <!--Mailform-->
       <section class="section section-md">
         <div class="container">
-          <h3>Зворотній зв'язок:</h3>
+          <h3>Feedback:</h3>
           <!--RD Mailform-->
-          <form class="rd-mailform rd-form text-left" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+          <form class="rd-mailform rd-form text-left" data-form-output="form-output-global" data-form-type="contact" method="POST" action="https://formspree.io/f/mknawall">
             <div class="row row-30">
               <div class="col-md-4">
                 <div class="form-wrap">
-                  <label class="form-label" for="contact-name">Your Name:</label>
+                  <label class="form-label" for="contact-name">Name</label>
                   <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
                 </div>
               </div>
@@ -168,7 +172,7 @@
               </div>
             </div>
             <div class="form-button">
-              <button class="button button-primary" type="submit">Надіслати повідомлення</button>
+              <button class="button button-primary" type="submit">Send message!</button>
             </div>
           </form>
         </div>
@@ -183,6 +187,7 @@
       </footer>
     </div>
     <div class="snackbars" id="form-output-global"></div>
+    <script async src="https://s.fx-w.io/widgets/exchange-rates/latest.js"></script>
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
   </body>

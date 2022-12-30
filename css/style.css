@@ -6018,7 +6018,26 @@ button.close {
 		align-self: stretch !important;
 	}
 }
-
+.lang {
+	border: 2px solid black;
+	width: 180px;
+	background: none;
+	border: none;
+	overflow: hidden;
+	position: absolute;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	top: 15px;
+	right: 80px;
+	z-index: 10000;
+	a {
+		font-size: 20px;
+		text-decoration: none;
+		color: #000;
+		
+	}
+}
 .float-left {
 	float: left !important;
 }
@@ -8432,6 +8451,7 @@ html.boxed body {
 		right: calc(50% - 1600px);
 	}
 }
+
 
 /** @group Utilities */
 /** @section Text styling */
